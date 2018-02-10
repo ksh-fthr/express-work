@@ -2,10 +2,10 @@ var express = require('express');
 var router = express.Router();
 
 var strage = {
-  id: null,
-  message: ''
+  id: 0,
+  message: 'デフォルトメッセージ'
 };
-var strages = [];
+var strages = [strage];
 
 /**
  * HTTP の GET メソッドを待ち受けてステータスコードと文字列, メッセージリストを返す
