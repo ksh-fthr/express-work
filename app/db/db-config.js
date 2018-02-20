@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize');
-const dbClient = new Sequelize('company', 'postgres', 'pgadmin', {
+const dbConfig = new Sequelize('company', 'postgres', 'pgadmin', {
   host: 'localhost',
   dialect: 'postgres',
 
@@ -11,4 +11,4 @@ const dbClient = new Sequelize('company', 'postgres', 'pgadmin', {
   }
 });
 
-module.exports = dbClient;
+module.exports = dbConfig;

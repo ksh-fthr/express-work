@@ -1,7 +1,10 @@
+const Sequelize = require('sequelize');
+const dbConfig = require('../db/db-config');
+
 /**
  * team_tbl テーブルの Entity モデル
  */
-const team = sequelize.define('team_tbl', {
+const team = dbConfig.define('team', {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,

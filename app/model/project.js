@@ -1,7 +1,10 @@
+const Sequelize = require('sequelize');
+const dbConfig = require('../db/db-config');
+
 /**
  * project_tbl テーブルの Entity モデル
  */
-const project = sequelize.define('project_tbl', {
+const project = dbConfig.define('project', {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,

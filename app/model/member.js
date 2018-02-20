@@ -1,7 +1,10 @@
+const Sequelize = require('sequelize');
+const dbConfig = require('../db/db-config');
+
 /**
  * member_tbl テーブルの Entity モデル
  */
-const member = sequelize.define('member_tbl', {
+const member = dbConfig.define('member', {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
@@ -27,6 +30,6 @@ const member = sequelize.define('member_tbl', {
   // transform all passed model names (first parameter of define) into plural.
   // if you don't want that, set the following
   freezeTableName: true
-})
+});
 
 module.exports = member;

@@ -2,6 +2,12 @@ var express = require('express');
 var router = express.Router();
 var dbClient = require('../app/db/db-client');
 
+var getMembers = async function getMembers(callback) {
+  await dbClient.findAll(function(records) {
+    callback(records);
+  });
+}
+
 /**
  * HTTP の GET メソッドを待ち受けてステータスコードと文字列, メッセージリストを返す
  * レスポンスは下記のJSONフォーマットで返却する
@@ -13,6 +19,9 @@ var dbClient = require('../app/db/db-client');
  * といった JSON が返却される
  */
 router.get('/get', function(req, res, next) {
+  getMembers(function(records) {
+    res.json(records);
+  });
 });
 
 /**
