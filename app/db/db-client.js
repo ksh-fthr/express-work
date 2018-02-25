@@ -31,7 +31,7 @@ var DbClient = function() {
 /**
  * レコード全件取得
  */
-DbClient.prototype.findAll = async function findAll(callback) {
+DbClient.prototype.findAll = function findAll(callback) {
 
   // 次のSQLが生成-実行される
   // member M inner join team_tbl T on M.project_id = T.project_id and M.team_id and T.team_id;

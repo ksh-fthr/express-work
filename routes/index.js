@@ -2,8 +2,8 @@ var express = require('express');
 var router = express.Router();
 var dbClient = require('../app/db/db-client');
 
-var getMembers = async function getMembers(callback) {
-  await dbClient.findAll(function(records) {
+var getMembers = function getMembers(callback) {
+ dbClient.findAll(function(records) {
     callback(records);
   });
 }
@@ -18,7 +18,7 @@ var getMembers = async function getMembers(callback) {
  * }
  * といった JSON が返却される
  */
-router.get('/get', function(req, res, next) {
+router.get('/findAll', function(req, res, next) {
   getMembers(function(records) {
     res.json(records);
   });
