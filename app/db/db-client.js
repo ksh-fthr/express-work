@@ -1,17 +1,42 @@
 const Sequelize = require('sequelize');
 const dbConfig = require('./db-config');
-const project = require('../model/project');
-const team = require('../model/team');
-const member = require('../model/member');
+const employee = require('../model/employee');
 
-// relation ship
-// has many
-project.hasMany(team, {foreignKey: 'project_id', targetKey: 'project_id'});
-team.hasMany(member, {foreignKey: 'project_id', targetKey: 'project_id'});
+/**
+ * フロントエンドに返却するクエリ実行結果
+ */
+var result = {
+  status: null,
+  record: null,
+  message: ""
+};
 
-// belongsTo
-team.belongsTo(project, {foreignKey: 'project_id', targetKey: 'project_id'});
-member.belongsTo(team, {foreignKey: 'project_id', targetKey: 'project_id'});
+/**
+ * クエリ実行結果を初期化する
+ */
+var initializeResult = function initializeResult() {
+  result.status = null,
+  result.record = null,
+  result.message = ""
+};
+
+/**
+ * クエリ実行結果をセットする
+ * @param {*} status 
+ * @param {*} record 
+ * @param {*} message 
+ */
+var setResult = function setResult(status, record, message) {
+  initializeResult();
+  result.status = status;
+  if (record) {
+    result.record = record;
+  } else {
+    result.message = message;
+  }
+
+  return result;
+};
 
 /** 
  * コンストラクタ
@@ -23,31 +48,112 @@ var DbClient = function() {
   .then(() => {
     console.log('Connection has been established successfully.');
   })
-  .catch(err => {
+  .catch((err) => {
     console.error('Unable to connect to the database:', err);
   });
 }
 
 /**
  * レコード全件取得
+ * @param {*} callback 
  */
-DbClient.prototype.findAll = function findAll(callback) {
-
-  // 次のSQLが生成-実行される
-  // member M inner join team_tbl T on M.project_id = T.project_id and M.team_id and T.team_id;
-  member.findAll({
-    include: [{
-      model: team,
-      where: {
-       team_id: {
-         $eq : Sequelize.col('member.team_id')
-        }
-      },
-      require: true
-    }]
+var findAll = function(callback) {
+  employee.findAll()
+  .then((record) => {
+    callback(setResult(200, record, null));
   })
-  .then((result) => {
-    callback(result);
+  .catch((err) => {
+    callback(setResult(500, null, err));
+  });
+};
+
+/**
+ * id に紐付くレコードを一件取得
+ * @param {*} id 
+ * @param {*} callback 
+ */
+var findById = function(id, callback) {
+  employee.findById(id)
+  .then((record) => {
+    if (record) {
+      callback(setResult(200, record, null));
+    } else {
+      callback(setResult(404, null, null));
+    }
+  })
+  .catch((err) => {
+    callback(setResult(500, null, err));
+  });
+};
+
+/**
+ * レコード取得
+ * @param {*} query 
+ * @param {*} callback 
+ */
+DbClient.prototype.find = function find(query, callback) {
+  if (query.id) {
+    findById(query.id, callback);
+  } else {
+    findAll(callback);
+  }
+};
+
+/**
+ * レコード登録
+ * @param {*} param 
+ * @param {*} callback 
+ */
+DbClient.prototype.register = function register(param, callback) {
+  employee.create(param)
+  .then((record) => {
+    callback(setResult(200, record, null));
+  })
+  .catch((err) => {
+    callback(setResult(500, null, err));
+  });
+};
+
+/**
+ * レコード更新
+ * @param {*} param 
+ * @param {*} query 
+ * @param {*} callback 
+ */
+DbClient.prototype.update = function update(param, query, callback) {
+  const where = {
+    where: {
+        id: query.id
+    }
+  };
+
+  employee.update(param, where)
+  .then((record) => {
+    callback(setResult(200, record, null));
+  })
+  .catch((err) => {
+    callback(setResult(500, null, err));
+  });
+};
+
+/**
+ * レコード削除
+ * @param {*} query 
+ * @param {*} callback 
+ */
+DbClient.prototype.remove = function remove(query, callback) {
+  const where = {
+    where: {
+        id: query.id
+    }
+  };
+
+  employee.destroy(where)
+  .then((record) => {
+    callback(setResult(200, record, null));
+  })
+  .catch((err) => {
+    callback(setResult(500, null, err));
   });
 };
 
