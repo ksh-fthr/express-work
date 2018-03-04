@@ -1,0 +1,174 @@
+{
+	"id": "26d9ae3b-44a1-e8bc-9d6a-690e670267f1",
+	"name": "Sequelize-CRUD",
+	"description": "",
+	"order": [
+		"e72a4098-ac42-fee8-2c75-450ad34d6d77",
+		"a6e55cf7-2f9c-2221-7507-899912c990e9",
+		"aeb1c0f9-8064-4367-109f-402364c20356",
+		"196afa2a-921c-d478-cbd7-efe3dd84019b",
+		"a159a012-da64-9f14-293c-3637161254bc"
+	],
+	"folders": [],
+	"folders_order": [],
+	"timestamp": 1520128761444,
+	"owner": 0,
+	"public": false,
+	"requests": [
+		{
+			"id": "196afa2a-921c-d478-cbd7-efe3dd84019b",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/update?id=8",
+			"queryParams": [
+				{
+					"key": "id",
+					"value": "8",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "PUT",
+			"collectionId": "26d9ae3b-44a1-e8bc-9d6a-690e670267f1",
+			"data": [],
+			"dataMode": "raw",
+			"name": "更新",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1520129675665,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n\t\"name\": \"bbddddd\",\n\t\"tel\": \"999-9999-9999\"\n}"
+		},
+		{
+			"id": "a159a012-da64-9f14-293c-3637161254bc",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:3000/delete?id=8",
+			"queryParams": [
+				{
+					"key": "id",
+					"value": "8",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "DELETE",
+			"collectionId": "26d9ae3b-44a1-e8bc-9d6a-690e670267f1",
+			"data": null,
+			"dataMode": "params",
+			"name": "削除",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1520129691751,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "a6e55cf7-2f9c-2221-7507-899912c990e9",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:3000/find",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "26d9ae3b-44a1-e8bc-9d6a-690e670267f1",
+			"data": null,
+			"dataMode": "params",
+			"name": "全件取得",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1520128807184,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		},
+		{
+			"id": "aeb1c0f9-8064-4367-109f-402364c20356",
+			"headers": "Content-Type: application/json\n",
+			"headerData": [
+				{
+					"key": "Content-Type",
+					"value": "application/json",
+					"description": "",
+					"enabled": true
+				}
+			],
+			"url": "http://localhost:3000/register",
+			"queryParams": [],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "POST",
+			"collectionId": "26d9ae3b-44a1-e8bc-9d6a-690e670267f1",
+			"data": [],
+			"dataMode": "raw",
+			"name": "登録",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1520129603249,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {},
+			"rawModeData": "{\n\t\"name\": \"bababaa\",\n\t\"tel\": \"000-9999-2222\"\n}"
+		},
+		{
+			"id": "e72a4098-ac42-fee8-2c75-450ad34d6d77",
+			"headers": "",
+			"headerData": [],
+			"url": "http://localhost:3000/find?id=2",
+			"queryParams": [
+				{
+					"key": "id",
+					"value": "2",
+					"equals": true,
+					"description": "",
+					"enabled": true
+				}
+			],
+			"pathVariables": {},
+			"pathVariableData": [],
+			"preRequestScript": null,
+			"method": "GET",
+			"collectionId": "26d9ae3b-44a1-e8bc-9d6a-690e670267f1",
+			"data": null,
+			"dataMode": "params",
+			"name": "ID指定",
+			"description": "",
+			"descriptionFormat": "html",
+			"time": 1520128777216,
+			"version": 2,
+			"responses": [],
+			"tests": null,
+			"currentHelper": "normal",
+			"helperAttributes": {}
+		}
+	]
+}

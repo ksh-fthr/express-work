@@ -1,6 +1,7 @@
-const Sequelize = require('sequelize');
-const dbConfig = require('./db-config');
-const employee = require('../model/employee');
+// Sequelize を使用して CRUD を実装するために必要な import 群
+const Sequelize = require('sequelize');        // Sequelize 本体
+const dbConfig = require('./db-config');       // 接続設定
+const employee = require('../model/employee'); // モデル
 
 /**
  * フロントエンドに返却するクエリ実行結果
@@ -57,7 +58,7 @@ var DbClient = function() {
  * レコード全件取得
  * @param {*} callback 
  */
-var findAll = function(callback) {
+var findAll = function findAll(callback) {
   employee.findAll()
   .then((record) => {
     callback(setResult(200, record, null));
@@ -72,7 +73,7 @@ var findAll = function(callback) {
  * @param {*} id 
  * @param {*} callback 
  */
-var findById = function(id, callback) {
+var findById = function findById(id, callback) {
   employee.findById(id)
   .then((record) => {
     if (record) {
@@ -121,13 +122,13 @@ DbClient.prototype.register = function register(param, callback) {
  * @param {*} callback 
  */
 DbClient.prototype.update = function update(param, query, callback) {
-  const where = {
+  const filter = {
     where: {
         id: query.id
     }
   };
 
-  employee.update(param, where)
+  employee.update(param, filter)
   .then((record) => {
     callback(setResult(200, record, null));
   })
@@ -142,13 +143,13 @@ DbClient.prototype.update = function update(param, query, callback) {
  * @param {*} callback 
  */
 DbClient.prototype.remove = function remove(query, callback) {
-  const where = {
+  const filter = {
     where: {
         id: query.id
     }
   };
 
-  employee.destroy(where)
+  employee.destroy(filter)
   .then((record) => {
     callback(setResult(200, record, null));
   })
