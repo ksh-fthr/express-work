@@ -5,7 +5,8 @@ var strage = {
   id: 0,
   message: 'デフォルトメッセージ'
 };
-var strages = [strage];
+
+const strages = [strage];
 
 /**
  * HTTP の GET メソッドを待ち受けてステータスコードと文字列, メッセージリストを返す
@@ -57,9 +58,11 @@ router.post('/post', function(req, res, next) {
     }
   }
 
-  strage.id = req.body.id;
-  strage.message = req.body.message;
-  strages.push(strage);
+  const localStorage = {
+    id: req.body.id,
+    message: req.body.message
+  };
+  strages.push(localStorage);
 
   res.status(200);
   res.json({
@@ -111,7 +114,7 @@ router.put('/put', function(req, res, next) {
     status: 404,
     response: '対象のメッセージが存在しない',
     messages: req.body
-  })  
+  })
 });
 
 /**
@@ -155,7 +158,7 @@ router.delete('/delete', function(req, res, next) {
     status: 404,
     response: '対象のメッセージが存在しない',
     messages: req.body
-  })  
+  })
 });
 
 module.exports = router;
