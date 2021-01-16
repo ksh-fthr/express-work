@@ -1,14 +1,9 @@
-var express = require('express');
-var router = express.Router();
 
 var storage = {
   id: 0,
   message: 'デフォルトメッセージ'
 };
-
-const storages = [storage];
-
-var dbClient = require('../app/db/db-client');
+var storages = [storage];
 
 /**
  * HTTP の GET メソッドを待ち受けてステータスコードと文字列, メッセージリストを返す
@@ -26,16 +21,6 @@ router.get('/get', function(req, res, next) {
     status: 200,
     response: 'メッセージリストを返却',
     messages: storages
-  });
-});
-
-/**
- * HTTP の GET メソッドを待ち受けて employee テーブルからレコードを全件取得して返す
- */
-router.get('/find', function(req, res, next) {
-  const query = req.query;
-  dbClient.find(query, function(result) {
-    res.json(result);
   });
 });
 
@@ -70,11 +55,9 @@ router.post('/post', function(req, res, next) {
     }
   }
 
-  const localStorage = {
-    id: req.body.id,
-    message: req.body.message
-  };
-  storages.push(localStorage);
+  storage.id = req.body.id;
+  storage.message = req.body.message;
+  storages.push(storage);
 
   res.status(200);
   res.json({
@@ -82,18 +65,8 @@ router.post('/post', function(req, res, next) {
     response: 'メッセージを登録',
     messages: storages
   })
-  });
 });
 
-/**
- * HTTP の POST メソッドを待ち受けて employee 情報を登録する
- */
-router.post('/register', function(req, res, next) {
-  const addData = req.body;
-  dbClient.register(addData, function(result) {
-    res.json(result);
-  });
-});
 
 /**
  * HTTP の PUT メソッドを待ち受けてメッセージを更新する
@@ -136,18 +109,7 @@ router.put('/put', function(req, res, next) {
     status: 404,
     response: '対象のメッセージが存在しない',
     messages: req.body
-  })
-});
-
-/**
- * HTTP の PUT メソッドを待ち受けて employee 情報を更新する
- */
-router.put('/update', function(req, res, next) {
-  const query = req.query;
-  const addData = req.body;
-  dbClient.update(addData, query, function(result) {
-    res.json(result);
-  });
+  })  
 });
 
 /**
@@ -191,17 +153,5 @@ router.delete('/delete', function(req, res, next) {
     status: 404,
     response: '対象のメッセージが存在しない',
     messages: req.body
-  })
+  })  
 });
-
-/**
- * HTTP の DELETE メソッドを待ち受けて employee 情報を全件削除する
- */
-router.delete('/remove', function(req, res, next) {
-  const query = req.query;
-  dbClient.remove(query, function(result) {
-    res.json(result);
-  });
-});
-
-module.exports = router;
