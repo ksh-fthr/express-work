@@ -1,9 +1,9 @@
 
-var strage = {
+var storage = {
   id: 0,
   message: 'デフォルトメッセージ'
 };
-var strages = [strage];
+var storages = [storage];
 
 /**
  * HTTP の GET メソッドを待ち受けてステータスコードと文字列, メッセージリストを返す
@@ -20,7 +20,7 @@ router.get('/get', function(req, res, next) {
   res.json({
     status: 200,
     response: 'メッセージリストを返却',
-    messages: strages
+    messages: storages
   });
 });
 
@@ -43,8 +43,8 @@ router.post('/post', function(req, res, next) {
     return;
   }
 
-  for (var i = 0; i < strages.length; i++) {
-    if (req.body.id === strages[i].id) {
+  for (var i = 0; i < storages.length; i++) {
+    if (req.body.id === storages[i].id) {
       res.status(409);
       res.json({
         status: 409,
@@ -55,15 +55,15 @@ router.post('/post', function(req, res, next) {
     }
   }
 
-  strage.id = req.body.id;
-  strage.message = req.body.message;
-  strages.push(strage);
+  storage.id = req.body.id;
+  storage.message = req.body.message;
+  storages.push(storage);
 
   res.status(200);
   res.json({
     status: 200,
     response: 'メッセージを登録',
-    messages: strages
+    messages: storages
   })
 });
 
@@ -91,14 +91,14 @@ router.put('/put', function(req, res, next) {
     return;
   }
 
-  for (var i = 0; i < strages.length; i++) {
-    if (req.body.id === strages[i].id) {
-      strages[i].message = req.body.message;
+  for (var i = 0; i < storages.length; i++) {
+    if (req.body.id === storages[i].id) {
+      storages[i].message = req.body.message;
       res.status(200);
       res.json({
         status: 200,
         response: 'メッセージを更新',
-        messages: strages
+        messages: storages
       })
       return;
     }
@@ -135,14 +135,14 @@ router.delete('/delete', function(req, res, next) {
     return;
   }
 
-  for (var i = 0; i < strages.length; i++) {
-    if (req.body.id === strages[i].id) {
-      strages.splice(i, 1);
+  for (var i = 0; i < storages.length; i++) {
+    if (req.body.id === storages[i].id) {
+      storages.splice(i, 1);
       res.status(200);
       res.json({
         status: 200,
         response: 'メッセージを削除',
-        messages: strages
+        messages: storages
       })
       return;
     }
