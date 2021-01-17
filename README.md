@@ -19,3 +19,7 @@
 * [feat_http_method](https://github.com/ksh-fthr/express-work/tree/feat_http_method)
   * フロントエンドを Angular, バックエンドを express として、両者の疎通確認をためすためのブランチ
   * Qiita の [[Angular] HTTPクライアント(RESTクライアント)を実装する](https://qiita.com/ksh-fthr/items/840ae54472892a87f48d) で扱った
+* [feat_api_routing](https://github.com/ksh-fthr/express-work/tree/feat_api_routing)
+  * API のルーティングを index.js から切り離すための仕組みを試すブランチ
+  * [feat_sequelize](https://github.com/ksh-fthr/express-work/tree/feat_sequelize) と [feat_http_method](https://github.com/ksh-fthr/express-work/tree/feat_http_method) で作成した API を対象とした
+  * Qiita の [[Express] REST-API をサービス単位で管理する](https://qiita.com/ksh-fthr/items/6351e95922adbff22937) で扱った記事を参考に実装した
