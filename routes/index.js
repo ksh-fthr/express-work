@@ -8,8 +8,6 @@ var storage = {
 
 const storages = [storage];
 
-var dbClient = require('../app/db/db-client');
-
 /**
  * HTTP の GET メソッドを待ち受けてステータスコードと文字列, メッセージリストを返す
  * レスポンスは下記のJSONフォーマットで返却する
@@ -26,16 +24,6 @@ router.get('/get', function(req, res, next) {
     status: 200,
     response: 'メッセージリストを返却',
     messages: storages
-  });
-});
-
-/**
- * HTTP の GET メソッドを待ち受けて employee テーブルからレコードを全件取得して返す
- */
-router.get('/find', function(req, res, next) {
-  const query = req.query;
-  dbClient.find(query, function(result) {
-    res.json(result);
   });
 });
 
@@ -82,18 +70,8 @@ router.post('/post', function(req, res, next) {
     response: 'メッセージを登録',
     messages: storages
   })
-  });
 });
 
-/**
- * HTTP の POST メソッドを待ち受けて employee 情報を登録する
- */
-router.post('/register', function(req, res, next) {
-  const addData = req.body;
-  dbClient.register(addData, function(result) {
-    res.json(result);
-  });
-});
 
 /**
  * HTTP の PUT メソッドを待ち受けてメッセージを更新する
@@ -140,17 +118,6 @@ router.put('/put', function(req, res, next) {
 });
 
 /**
- * HTTP の PUT メソッドを待ち受けて employee 情報を更新する
- */
-router.put('/update', function(req, res, next) {
-  const query = req.query;
-  const addData = req.body;
-  dbClient.update(addData, query, function(result) {
-    res.json(result);
-  });
-});
-
-/**
  * HTTP の DELETE メソッドを待ち受けてメッセージを削除する
  * 成功時､ステータスコードと文字列､ 削除後のメッセージリストを返す
  *
@@ -192,16 +159,6 @@ router.delete('/delete', function(req, res, next) {
     response: '対象のメッセージが存在しない',
     messages: req.body
   })
-});
-
-/**
- * HTTP の DELETE メソッドを待ち受けて employee 情報を全件削除する
- */
-router.delete('/remove', function(req, res, next) {
-  const query = req.query;
-  dbClient.remove(query, function(result) {
-    res.json(result);
-  });
 });
 
 module.exports = router;
