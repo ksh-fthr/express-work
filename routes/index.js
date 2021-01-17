@@ -82,7 +82,6 @@ router.post('/post', function(req, res, next) {
     response: 'メッセージを登録',
     messages: storages
   })
-  });
 });
 
 /**
