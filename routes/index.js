@@ -9,14 +9,7 @@ var getMembers = function getMembers(callback) {
 }
 
 /**
- * HTTP の GET メソッドを待ち受けてステータスコードと文字列, メッセージリストを返す
- * レスポンスは下記のJSONフォーマットで返却する
- * {
- *   status: 200,
- *   response: 'メッセージリストを返却',
- *   messages: {{メッセージリスト}}
- * }
- * といった JSON が返却される
+ * HTTP の GET メソッドを待ち受けて member テーブルからレコードを全件取得して返す
  */
 router.get('/findAll', function(req, res, next) {
   getMembers(function(records) {
@@ -25,49 +18,28 @@ router.get('/findAll', function(req, res, next) {
 });
 
 /**
- * HTTP の POST メソッドを待ち受けてメッセージを登録する
- * 成功時､ステータスコードと文字列､登録後のメッセージリストを返す
- *
- * レスポンスは下記のJSONフォーマットで返却する
- * {
- *   status: 200,
- *   response: 'メッセージを登録',
- *   messages: {{メッセージリスト}}
- * }
- * といった JSON が返却される
+ * HTTP の POST メソッドを待ち受ける
+ * 
+ * @note TBD...
  */
 router.post('/post', function(req, res, next) {
 });
 
 
 /**
- * HTTP の PUT メソッドを待ち受けてメッセージを更新する
- * 成功時､ステータスコードと文字列､ 更新後のメッセージリストを返す
- *
- * レスポンスは下記のJSONフォーマットで返却する
- * {
- *   status: 200,
- *   response: 'メッセージを更新',
- *   messages: {{メッセージリスト}}
- * }
- * といった JSON が返却される
+ * HTTP の PUT メソッドを待ち受ける
+ * 
+ * @note TBD...
  */
 router.put('/put', function(req, res, next) {
 });
 
 /**
- * HTTP の DELETE メソッドを待ち受けてメッセージを削除する
- * 成功時､ステータスコードと文字列､ 削除後のメッセージリストを返す
- *
- * レスポンスは下記のJSONフォーマットで返却する
- * {
- *   status: 200,
- *   response: 'メッセージを削除',
- *   messages: {{メッセージリスト}}
- * }
- * といった JSON が返却される
+ * HTTP の POST メソッドを待ち受ける
+ * 
+ * @note TBD...
  */
-router.delete('/delete', function(req, res, next) {
+router.delete('/remove', function(req, res, next) {
 });
 
 module.exports = router;
