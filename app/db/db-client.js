@@ -74,7 +74,7 @@ var findAll = function findAll(callback) {
  * @param {*} callback 
  */
 var findById = function findById(id, callback) {
-  employee.findById(id)
+  employee.findByPk(id)
   .then((record) => {
     if (record) {
       callback(setResult(200, record, null));
