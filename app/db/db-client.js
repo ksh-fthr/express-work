@@ -1,5 +1,4 @@
 // Sequelize を使用して CRUD を実装するために必要な import 群
-const Sequelize = require('sequelize');        // Sequelize 本体
 const dbConfig = require('./db-config');       // 接続設定
 const employee = require('../model/employee'); // モデル
 

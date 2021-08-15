@@ -35,7 +35,9 @@ function createApi(router) {
    * HTTP の PUT メソッドを待ち受けて employee 情報を更新する
    */
   router.put('/update', function(req, res, next) {
-    const query = req.query;
+    const query = {
+      id: req.body.id
+    }
     const addData = req.body;
     dbClient.update(addData, query, function(result) {
       res.json(result);
@@ -46,7 +48,9 @@ function createApi(router) {
    * HTTP の DELETE メソッドを待ち受けて employee 情報を全件削除する
    */
   router.delete('/remove', function(req, res, next) {
-    const query = req.query;
+    const query = {
+      id: req.body.id
+    }
     dbClient.remove(query, function(result) {
       res.json(result);
     });
