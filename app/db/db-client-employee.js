@@ -41,7 +41,7 @@ var setResult = function setResult(status, record, message) {
 /** 
  * コンストラクタ
  */
-var DbClient = function() {
+var DbClientEmployee = function() {
   // db access
   dbConfig
   .authenticate()
@@ -91,7 +91,7 @@ var findById = function findById(id, callback) {
  * @param {*} query 
  * @param {*} callback 
  */
-DbClient.prototype.find = function find(query, callback) {
+DbClientEmployee.prototype.find = function find(query, callback) {
   if (query.id) {
     findById(query.id, callback);
   } else {
@@ -104,7 +104,7 @@ DbClient.prototype.find = function find(query, callback) {
  * @param {*} param 
  * @param {*} callback 
  */
-DbClient.prototype.register = function register(param, callback) {
+DbClientEmployee.prototype.register = function register(param, callback) {
   employee.create(param)
   .then((record) => {
     callback(setResult(200, record, null));
@@ -120,7 +120,7 @@ DbClient.prototype.register = function register(param, callback) {
  * @param {*} query 
  * @param {*} callback 
  */
-DbClient.prototype.update = function update(param, query, callback) {
+DbClientEmployee.prototype.update = function update(param, query, callback) {
   const filter = {
     where: {
         id: query.id
@@ -141,7 +141,7 @@ DbClient.prototype.update = function update(param, query, callback) {
  * @param {*} query 
  * @param {*} callback 
  */
-DbClient.prototype.remove = function remove(query, callback) {
+DbClientEmployee.prototype.remove = function remove(query, callback) {
   const filter = {
     where: {
         id: query.id
@@ -157,4 +157,4 @@ DbClient.prototype.remove = function remove(query, callback) {
   });
 };
 
-module.exports = new DbClient();
+module.exports = new DbClientEmployee();

@@ -2,7 +2,7 @@
 // comapny-api
 // *******************************************
 
-const dbClient = require('../app/db/db-client');
+const dbClientEmployee = require('./db/db-client-employee');
 
 /**
  * REST-API を作る
@@ -14,9 +14,9 @@ function createApi(router) {
   /**
    * HTTP の GET メソッドを待ち受けて employee テーブルからレコードを全件取得して返す
    */
-  router.get('/find', function(req, res, next) {
+  router.get('/employee/find', function(req, res, next) {
     const query = req.query;
-    dbClient.find(query, function(result) {
+    dbClientEmployee.find(query, function(result) {
       res.json(result);
     });
   });
@@ -24,9 +24,9 @@ function createApi(router) {
   /**
    * HTTP の POST メソッドを待ち受けて employee 情報を登録する
    */
-  router.post('/register', function(req, res, next) {
+  router.post('/employee/register', function(req, res, next) {
     const addData = req.body;
-    dbClient.register(addData, function(result) {
+    dbClientEmployee.register(addData, function(result) {
       res.json(result);
     });
   });
@@ -34,12 +34,12 @@ function createApi(router) {
   /**
    * HTTP の PUT メソッドを待ち受けて employee 情報を更新する
    */
-  router.put('/update', function(req, res, next) {
+  router.put('/employee/update', function(req, res, next) {
     const query = {
       id: req.body.id
-    }
+    };
     const addData = req.body;
-    dbClient.update(addData, query, function(result) {
+    dbClientEmployee.update(addData, query, function(result) {
       res.json(result);
     });
   });
@@ -47,11 +47,11 @@ function createApi(router) {
   /**
    * HTTP の DELETE メソッドを待ち受けて employee 情報を全件削除する
    */
-  router.delete('/remove', function(req, res, next) {
+  router.delete('/employee/remove', function(req, res, next) {
     const query = {
       id: req.body.id
-    }
-    dbClient.remove(query, function(result) {
+    };
+    dbClientEmployee.remove(query, function(result) {
       res.json(result);
     });
   });
@@ -60,7 +60,7 @@ function createApi(router) {
 /**
  * コンストラクタ
  */
-const CompanyApi = function CompanyApi() {}
+const CompanyApi = function CompanyApi() {};
 
 // prototype 継承に突っ込む
 CompanyApi.prototype.createApi = createApi;
