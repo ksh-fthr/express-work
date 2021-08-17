@@ -2,13 +2,15 @@
 // サービスごとのモジュールを管理する Factory
 // *******************************************
 
-const companyApi = require('./company-api.js');
+const employeeApi = require('./employee-api.js');
 const messageApi = require('./message-api.js');
+const memberApi = require('./member-api.js');
 
 // サービス管理テーブル
 const serviceTable = [
-    companyApi,
-    messageApi
+  employeeApi,
+  messageApi,
+  memberApi,
 ];
 
 /**
