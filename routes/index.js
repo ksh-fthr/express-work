@@ -18,7 +18,7 @@ const storages = [storage];
  * }
  * といった JSON が返却される
  */
-router.get('/get', function(req, res, next) {
+router.get('/message/get', function(req, res, next) {
   res.status(200);
   res.json({
     status: 200,
@@ -39,7 +39,7 @@ router.get('/get', function(req, res, next) {
  * }
  * といった JSON が返却される
  */
-router.post('/post', function(req, res, next) {
+router.post('/message/post', function(req, res, next) {
   if (!req.body.id || req.body.id === '') {
     res.status(400);
     res.json({status: 400, response: 'IDが指定されていない'})
@@ -53,7 +53,7 @@ router.post('/post', function(req, res, next) {
         status: 409,
         response: 'IDが重複',
         messages: req.body
-      })
+      });
       return;
     }
   }
@@ -69,7 +69,7 @@ router.post('/post', function(req, res, next) {
     status: 200,
     response: 'メッセージを登録',
     messages: storages
-  })
+  });
 });
 
 
@@ -85,14 +85,14 @@ router.post('/post', function(req, res, next) {
  * }
  * といった JSON が返却される
  */
-router.put('/put', function(req, res, next) {
+router.put('/message/put', function(req, res, next) {
   if (!req.body.id || req.body.id === '') {
     res.status(400);
     res.json({
       status: 400,
       response: 'IDが指定されていない',
       message: req.body
-    })
+    });
     return;
   }
 
@@ -104,7 +104,7 @@ router.put('/put', function(req, res, next) {
         status: 200,
         response: 'メッセージを更新',
         messages: storages
-      })
+      });
       return;
     }
   }
@@ -114,7 +114,7 @@ router.put('/put', function(req, res, next) {
     status: 404,
     response: '対象のメッセージが存在しない',
     messages: req.body
-  })
+  });
 });
 
 /**
@@ -129,14 +129,14 @@ router.put('/put', function(req, res, next) {
  * }
  * といった JSON が返却される
  */
-router.delete('/delete', function(req, res, next) {
+router.delete('/message/delete', function(req, res, next) {
   if (!req.body.id || req.body.id === '') {
     res.status(400);
     res.json({
       status: 400,
       response: 'IDが指定されていない',
       message: req.body
-    })
+    });
     return;
   }
 
@@ -148,7 +148,7 @@ router.delete('/delete', function(req, res, next) {
         status: 200,
         response: 'メッセージを削除',
         messages: storages
-      })
+      });
       return;
     }
   }
@@ -158,7 +158,7 @@ router.delete('/delete', function(req, res, next) {
     status: 404,
     response: '対象のメッセージが存在しない',
     messages: req.body
-  })
+  });
 });
 
 module.exports = router;
