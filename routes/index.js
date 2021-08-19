@@ -36,7 +36,7 @@ router.put('/employee/update', function(req, res, next) {
 });
 
 /**
- * HTTP の DELETE メソッドを待ち受けて employee 情報を全件削除する
+ * HTTP の DELETE メソッドを待ち受けて employee 情報を削除する
  */
 router.delete('/employee/remove', function(req, res, next) {
   const query = {
