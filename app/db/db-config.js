@@ -6,12 +6,11 @@ const Sequelize = require('sequelize');
 const dbConfig = new Sequelize('company', 'postgres', 'pgadmin', {
   //
   // 接続先ホストを指定
-  //
-  // docker 経由で動かす場合は `docker-compose.yml` の `services` にあるエントリ: `postgresql` を指定する
-  // host: 'postgresql',
-  //
-  // docker 経由で動かさない場合は `localhost` を指定する 
-  host: 'localhost',
+  // ( 環境変数から取得する )
+  host: (() => {
+    console.log(process.env.DB_HOST);
+    return process.env.HOST ? process.env.DB_HOST : 'localhost';
+  })(),
 
   // 使用する DB 製品を指定
   dialect: 'postgres',
