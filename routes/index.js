@@ -6,12 +6,12 @@ var getMembers = function getMembers(callback) {
  dbClient.findAll(function(records) {
     callback(records);
   });
-}
+};
 
 /**
  * HTTP の GET メソッドを待ち受けて member テーブルからレコードを全件取得して返す
  */
-router.get('/findAll', function(req, res, next) {
+router.get('/member/findAll', function(req, res, next) {
   getMembers(function(records) {
     res.json(records);
   });
@@ -22,7 +22,7 @@ router.get('/findAll', function(req, res, next) {
  * 
  * @note TBD...
  */
-router.post('/post', function(req, res, next) {
+router.post('/member/post', function(req, res, next) {
 });
 
 
@@ -31,7 +31,7 @@ router.post('/post', function(req, res, next) {
  * 
  * @note TBD...
  */
-router.put('/put', function(req, res, next) {
+router.put('/member/put', function(req, res, next) {
 });
 
 /**
@@ -39,7 +39,7 @@ router.put('/put', function(req, res, next) {
  * 
  * @note TBD...
  */
-router.delete('/remove', function(req, res, next) {
+router.delete('/member/remove', function(req, res, next) {
 });
 
 module.exports = router;

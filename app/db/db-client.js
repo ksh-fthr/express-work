@@ -1,4 +1,5 @@
 const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 const dbConfig = require('./db-config');
 const project = require('../model/project');
 const team = require('../model/team');
@@ -40,7 +41,7 @@ DbClient.prototype.findAll = function findAll(callback) {
       model: team,
       where: {
        team_id: {
-         $eq : Sequelize.col('member.team_id')
+          [Op.eq]: Sequelize.col('member.team_id')
         }
       },
       require: true
