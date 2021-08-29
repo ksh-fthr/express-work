@@ -8,8 +8,8 @@ const dbConfig = new Sequelize('company', 'postgres', 'pgadmin', {
   // 接続先ホストを指定
   // ( 環境変数から取得する )
   host: (() => {
-    console.log(process.env.DB_HOST);
-    return process.env.HOST ? process.env.DB_HOST : 'localhost';
+    console.log(`DB_HOST: ${process.env.DB_HOST}`);
+    return process.env.DB_HOST ? process.env.DB_HOST : 'localhost';
   })(),
 
   // 使用する DB 製品を指定
