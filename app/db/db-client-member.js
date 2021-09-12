@@ -7,33 +7,32 @@ const member = require('../model/member');
 
 // relation ship
 // has many
-project.hasMany(team, {foreignKey: 'project_id', targetKey: 'project_id'});
-team.hasMany(member, {foreignKey: 'project_id', targetKey: 'project_id'});
+project.hasMany(team, { foreignKey: 'project_id', targetKey: 'project_id' });
+team.hasMany(member, { foreignKey: 'project_id', targetKey: 'project_id' });
 
 // belongsTo
-team.belongsTo(project, {foreignKey: 'project_id', targetKey: 'project_id'});
-member.belongsTo(team, {foreignKey: 'project_id', targetKey: 'project_id'});
+team.belongsTo(project, { foreignKey: 'project_id', targetKey: 'project_id' });
+member.belongsTo(team, { foreignKey: 'project_id', targetKey: 'project_id' });
 
-/** 
+/**
  * コンストラクタ
  */
-var DbClientMember = function() {
+const DbClientMember = function () {
   // db access
   dbConfig
-  .authenticate()
-  .then(() => {
-    console.log('Connection has been established successfully.');
-  })
-  .catch(err => {
-    console.error('Unable to connect to the database:', err);
-  });
+    .authenticate()
+    .then(() => {
+      console.log('Connection has been established successfully.');
+    })
+    .catch(err => {
+      console.error('Unable to connect to the database:', err);
+    });
 };
 
 /**
  * レコード全件取得
  */
-DbClientMember.prototype.findAll = function findAll(callback) {
-
+DbClientMember.prototype.findAll = function findAll (callback) {
   // 次のSQLが生成-実行される
   //
   // SELECT
@@ -64,9 +63,9 @@ DbClientMember.prototype.findAll = function findAll(callback) {
       require: true
     }]
   })
-  .then((result) => {
-    callback(result);
-  });
+    .then((result) => {
+      callback(result);
+    });
 };
 
 module.exports = new DbClientMember();

@@ -8,14 +8,14 @@ const employee = dbConfig.define('employee', {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
-    autoIncrement: true 
+    autoIncrement: true
   },
   name: {
     type: Sequelize.STRING
   },
   tel: {
     type: Sequelize.STRING
-  },
+  }
 }, {
   // タイムスタンプの属性 (updatedAt, createdAt) が不要ならば次のプロパティは false
   timestamps: false,

@@ -8,14 +8,14 @@ const project = dbConfig.define('project', {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
-    autoIncrement: true 
+    autoIncrement: true
   },
   project_id: {
     type: Sequelize.STRING
   },
   project_name: {
     type: Sequelize.STRING
-  },
+  }
 }, {
   // don't add the timestamp attributes (updatedAt, createdAt)
   timestamps: false,
