@@ -1,4 +1,35 @@
 {
+    "git.ignoreLimitWarning": true,
+    "files.eol": "\n",
+    "files.trimTrailingWhitespace": true,
+    // editor
+    "editor.tabSize": 2,
+    "editor.tabCompletion": "on",
+    "editor.insertSpaces": true,
+    "editor.wordWrap": "off",
+    "editor.autoIndent": "full",
+    "editor.matchBrackets": "always",
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true // ファイル保存時にESLintでフォーマット
+    },
+    // フォーマッタをprettierに指定
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true, // ファイル保存時にPrettierでフォーマット
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true, // ファイル保存時にPrettierでフォーマット
+    },
+    // javascript/typescript
+    "javascript.preferences.quoteStyle": "single",
+    "prettier.singleQuote": true,
+    "prettier.jsxSingleQuote": true,
+    "typescript.preferences.quoteStyle": "single",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "eslint.format.enable": true,
     "workbench.colorCustomizations": {
         "activityBar.activeBackground": "#2f7c47",
         "activityBar.activeBorder": "#422c74",
