@@ -7,11 +7,11 @@
     "lint": "eslint ./app/**/*.js --fix"
   },
   "dependencies": {
-    "body-parser": "^1.19.2",
-    "cookie-parser": "^1.4.6",
-    "debug": "~4.3.2",
+    "body-parser": "1.19.2",
+    "cookie-parser": "1.4.6",
+    "debug": "4.3.4",
     "express": "^4.17.3",
-    "morgan": "~1.10.0",
+    "morgan": "1.10.0",
     "pg": "^8.7.1",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.9.0"
@@ -22,6 +22,6 @@
     "eslint-plugin-import": "^2.25.2",
     "eslint-plugin-node": "^11.1.0",
     "eslint-plugin-promise": "^5.1.1",
-    "nodemon": "^2.0.18"
+    "nodemon": "2.0.18"
   }
 }
