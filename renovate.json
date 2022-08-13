@@ -12,9 +12,6 @@
   "automergeSchedule": [
     "every 1 hour after 00:00 and before 23:59 every day"
   ],
-  "constraints": {
-    "node": "18.7.0"
-  },
   "major": {
     "enabled": false
   },
