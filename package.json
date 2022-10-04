@@ -14,7 +14,7 @@
     "morgan": "1.10.0",
     "pg": "8.8.0",
     "pg-hstore": "2.3.4",
-    "sequelize": "6.23.2"
+    "sequelize": "6.24.0"
   },
   "devDependencies": {
     "eslint": "8.24.0",
