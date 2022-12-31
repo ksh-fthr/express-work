@@ -1,4 +1,35 @@
 {
+    "git.ignoreLimitWarning": true,
+    "files.eol": "\n",
+    "files.trimTrailingWhitespace": true,
+    // editor
+    "editor.tabSize": 2,
+    "editor.tabCompletion": "on",
+    "editor.insertSpaces": true,
+    "editor.wordWrap": "off",
+    "editor.autoIndent": "full",
+    "editor.matchBrackets": "always",
+    "editor.formatOnPaste": true,
+    "editor.formatOnType": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.eslint": true // ファイル保存時にESLintでフォーマット
+    },
+    // フォーマッタをprettierに指定
+    "[typescript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true, // ファイル保存時にPrettierでフォーマット
+    },
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true, // ファイル保存時にPrettierでフォーマット
+    },
+    // javascript/typescript
+    "javascript.preferences.quoteStyle": "single",
+    "prettier.singleQuote": true,
+    "prettier.jsxSingleQuote": true,
+    "typescript.preferences.quoteStyle": "single",
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "eslint.format.enable": true,
     "workbench.colorCustomizations": {
         "activityBar.activeBackground": "#2f7c47",
         "activityBar.activeBorder": "#422c74",
@@ -13,7 +44,12 @@
         "titleBar.activeBackground": "#215732",
         "titleBar.activeForeground": "#e7e7e7",
         "titleBar.inactiveBackground": "#21573299",
-        "titleBar.inactiveForeground": "#e7e7e799"
+        "titleBar.inactiveForeground": "#e7e7e799",
+        "editorGroup.border": "#2f7c47",
+        "panel.border": "#2f7c47",
+        "sash.hoverBorder": "#2f7c47",
+        "sideBar.border": "#2f7c47",
+        "statusBarItem.remoteBackground": "#215732",
+        "statusBarItem.remoteForeground": "#e7e7e7"
     },
-    "peacock.color": "#215732"
 }

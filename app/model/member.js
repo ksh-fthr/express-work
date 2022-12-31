@@ -8,12 +8,12 @@ const member = dbConfig.define('member', {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
-    autoIncrement: true 
+    autoIncrement: true
   },
   project_id: {
     type: Sequelize.STRING
   },
-  team_id : {
+  team_id: {
     type: Sequelize.STRING
   },
   member_id: {

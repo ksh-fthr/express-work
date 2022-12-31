@@ -8,7 +8,7 @@ const team = dbConfig.define('team', {
   id: {
     type: Sequelize.INTEGER,
     primaryKey: true,
-    autoIncrement: true 
+    autoIncrement: true
   },
   project_id: {
     type: Sequelize.STRING
