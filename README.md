@@ -8,14 +8,39 @@
 
 # 環境について
 
-| 環境                                       | バージョン | 備考                    |
-| :----------------------------------------- | :--------- | :---------------------- |
-| [Node.js](https://nodejs.org/ja/)          | v12.18.3   | `$ node --version`      |
-| [npm](https://www.npmjs.com/)              | v6.14.6    | `$ npm --version`       |
-| [express](https://expressjs.com/)          | v4.17.1    | package.json の記載から |
-| [Sequelize](https://sequelize.org/master/) | v6.4.0     | 同上                    |
+| 環境                                                 | バージョン | 備考                          |
+| :--------------------------------------------------- | :--------- | :---------------------------- |
+| [Node.js](https://nodejs.org/ja/)                    | v16.19.0   | `$ node --version` で確認     |
+| [npm](https://www.npmjs.com/)                        | 8.19.3     | `$ npm --version` で確認      |
+| [express](https://expressjs.com/)                    | v4.18.2    | `npm list --depth=0` で確認   |
+| [morgan](https://github.com/expressjs/morgan#readme) | v1.10.0    | 同上                          |
+| [nodemon](https://nodemon.io/)                       | v2.0.20    | 同上                          |
+| [pg](https://github.com/brianc/node-postgres)        | v8.9.0     | 同上                          |
+| [pg-hstore](https://github.com/scarney81/pg-hstore)  | v2.3.4     | 同上                          |
+| [Sequelize](https://sequelize.org/master/)           | v6.28.0    | 同上                          |
 
+<details>
+<summary>パッケージの確認</summary>
 
+```bash
+% npm list --depth=0
+├── body-parser@1.20.1
+├── cookie-parser@1.4.6
+├── debug@4.3.4
+├── eslint-config-standard@17.0.0
+├── eslint-plugin-import@2.27.5
+├── eslint-plugin-node@11.1.0
+├── eslint-plugin-promise@6.1.1
+├── eslint@8.33.0
+├── express@4.18.2
+├── morgan@1.10.0
+├── nodemon@2.0.20
+├── pg-hstore@2.3.4
+├── pg@8.9.0
+└── sequelize@6.28.0
+```
+
+</details>
 
 # ブランチについて
 
