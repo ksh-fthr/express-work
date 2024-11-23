@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "start": "nodemon -e ejs,js,json start ./bin/www",
-    "lint": "eslint ./app/**/*.js --fix"
+    "lint": "eslint ./app/**/*.js --fix",
+    "fix:prettier": "prettier --write ."
   },
   "dependencies": {
     "body-parser": "1.20.3",
