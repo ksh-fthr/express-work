@@ -10,6 +10,7 @@
     },
     "rules": {
         "indent": ["error", 4],
+        "eol-last": ["error", "always"],
         // ===> ここからセミコロン必須の設定
         "semi": ["error", "always"],
         "quotes": ["error", "single"],
