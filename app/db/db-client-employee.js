@@ -6,18 +6,18 @@ const employee = require('../model/employee'); // モデル
  * フロントエンドに返却するクエリ実行結果
  */
 const result = {
-  status: null,
-  record: null,
-  message: ''
+    status: null,
+    record: null,
+    message: ''
 };
 
 /**
  * クエリ実行結果を初期化する
  */
-const initializeResult = function initializeResult () {
-  result.status = null;
-  result.record = null;
-  result.message = '';
+const initializeResult = function initializeResult() {
+    result.status = null;
+    result.record = null;
+    result.message = '';
 };
 
 /**
@@ -26,45 +26,46 @@ const initializeResult = function initializeResult () {
  * @param {*} record
  * @param {*} message
  */
-const setResult = function setResult (status, record, message) {
-  initializeResult();
-  result.status = status;
-  if (record) {
-    result.record = record;
-  } else {
-    result.message = message;
-  }
+const setResult = function setResult(status, record, message) {
+    initializeResult();
+    result.status = status;
+    if (record) {
+        result.record = record;
+    } else {
+        result.message = message;
+    }
 
-  return result;
+    return result;
 };
 
 /**
  * コンストラクタ
  */
 const DbClientEmployee = function () {
-  // db access
-  dbConfig
-    .authenticate()
-    .then(() => {
-      console.log('Connection has been established successfully.');
-    })
-    .catch((err) => {
-      console.error('Unable to connect to the database:', err);
-    });
+    // db access
+    dbConfig
+        .authenticate()
+        .then(() => {
+            console.log('Connection has been established successfully.');
+        })
+        .catch((err) => {
+            console.error('Unable to connect to the database:', err);
+        });
 };
 
 /**
  * レコード全件取得
  * @param {*} callback
  */
-const findAll = function findAll (callback) {
-  employee.findAll()
-    .then((record) => {
-      callback(setResult(200, record, null));
-    })
-    .catch((err) => {
-      callback(setResult(500, null, err));
-    });
+const findAll = function findAll(callback) {
+    employee
+        .findAll()
+        .then((record) => {
+            callback(setResult(200, record, null));
+        })
+        .catch((err) => {
+            callback(setResult(500, null, err));
+        });
 };
 
 /**
@@ -72,18 +73,19 @@ const findAll = function findAll (callback) {
  * @param {*} id
  * @param {*} callback
  */
-const findById = function findById (id, callback) {
-  employee.findByPk(id)
-    .then((record) => {
-      if (record) {
-        callback(setResult(200, record, null));
-      } else {
-        callback(setResult(404, null, null));
-      }
-    })
-    .catch((err) => {
-      callback(setResult(500, null, err));
-    });
+const findById = function findById(id, callback) {
+    employee
+        .findByPk(id)
+        .then((record) => {
+            if (record) {
+                callback(setResult(200, record, null));
+            } else {
+                callback(setResult(404, null, null));
+            }
+        })
+        .catch((err) => {
+            callback(setResult(500, null, err));
+        });
 };
 
 /**
@@ -91,12 +93,12 @@ const findById = function findById (id, callback) {
  * @param {*} query
  * @param {*} callback
  */
-DbClientEmployee.prototype.find = function find (query, callback) {
-  if (query.id) {
-    findById(query.id, callback);
-  } else {
-    findAll(callback);
-  }
+DbClientEmployee.prototype.find = function find(query, callback) {
+    if (query.id) {
+        findById(query.id, callback);
+    } else {
+        findAll(callback);
+    }
 };
 
 /**
@@ -104,14 +106,15 @@ DbClientEmployee.prototype.find = function find (query, callback) {
  * @param {*} param
  * @param {*} callback
  */
-DbClientEmployee.prototype.register = function register (param, callback) {
-  employee.create(param)
-    .then((record) => {
-      callback(setResult(200, record, null));
-    })
-    .catch((err) => {
-      callback(setResult(500, null, err));
-    });
+DbClientEmployee.prototype.register = function register(param, callback) {
+    employee
+        .create(param)
+        .then((record) => {
+            callback(setResult(200, record, null));
+        })
+        .catch((err) => {
+            callback(setResult(500, null, err));
+        });
 };
 
 /**
@@ -120,20 +123,21 @@ DbClientEmployee.prototype.register = function register (param, callback) {
  * @param {*} query
  * @param {*} callback
  */
-DbClientEmployee.prototype.update = function update (param, query, callback) {
-  const filter = {
-    where: {
-      id: query.id
-    }
-  };
+DbClientEmployee.prototype.update = function update(param, query, callback) {
+    const filter = {
+        where: {
+            id: query.id
+        }
+    };
 
-  employee.update(param, filter)
-    .then((record) => {
-      callback(setResult(200, record, null));
-    })
-    .catch((err) => {
-      callback(setResult(500, null, err));
-    });
+    employee
+        .update(param, filter)
+        .then((record) => {
+            callback(setResult(200, record, null));
+        })
+        .catch((err) => {
+            callback(setResult(500, null, err));
+        });
 };
 
 /**
@@ -141,20 +145,21 @@ DbClientEmployee.prototype.update = function update (param, query, callback) {
  * @param {*} query
  * @param {*} callback
  */
-DbClientEmployee.prototype.remove = function remove (query, callback) {
-  const filter = {
-    where: {
-      id: query.id
-    }
-  };
+DbClientEmployee.prototype.remove = function remove(query, callback) {
+    const filter = {
+        where: {
+            id: query.id
+        }
+    };
 
-  employee.destroy(filter)
-    .then((record) => {
-      callback(setResult(200, record, null));
-    })
-    .catch((err) => {
-      callback(setResult(500, null, err));
-    });
+    employee
+        .destroy(filter)
+        .then((record) => {
+            callback(setResult(200, record, null));
+        })
+        .catch((err) => {
+            callback(setResult(500, null, err));
+        });
 };
 
 module.exports = new DbClientEmployee();
